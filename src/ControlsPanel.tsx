@@ -24,7 +24,7 @@ export default function ControlsPanel({
 }) {
   const hoverWaiter = useRef<NodeJS.Timeout>();
   return (
-    <div className="w-full absolute bottom-0 translate-y-full flex items-center p-2 gap-5 text-white">
+    <div className="w-full absolute bottom-0 translate-5y-full flex items-center p-2 gap-5 text-white">
       <p style={{ textWrap: "nowrap" }}>
         {getTimeFormatted(currentTime) +
           " / " +

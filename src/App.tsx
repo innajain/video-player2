@@ -109,7 +109,7 @@ function App() {
   };
   return (
     <div
-      className="w-full min-h-[100vh] flex justify-center items-center bg-black relative"
+      className="w-full h-[100vh] flex justify-center items-center bg-black relative"
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
@@ -121,11 +121,12 @@ function App() {
         <p className="text-white text-2xl">Drop the mp4 video here</p>
       </div>
       {videoFile && (
-        <div className="w-2/3 bg-black relative">
+        <div className="h-full p-5 relative flex flex-col justify-between items-center">
           <video
             src={videoFile}
-            className="w-full relative"
+            className="h-[95%] relative"
             ref={videoRef}
+            autoPlay
             playsInline
             controls={false}
             onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime!)}
