@@ -72,6 +72,7 @@ function App() {
         pressTimer.current = undefined;
         if (videoRef.current && timerCompleted.current == true) {
           videoRef.current.playbackRate = 1;
+          setPlaybackRate(1);
         }
         if (timerCompleted.current == false) {
           if (isPlaying) {
