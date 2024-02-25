@@ -12,6 +12,7 @@ function App() {
   const pressTimer = useRef<NodeJS.Timeout>();
   const timerCompleted = useRef(false);
   const [videoFile, setVideoFile] = useState<string>();
+  const [playbackRate, setPlaybackRate] = useState(1);
 
   useEffect(() => {
     function handleSpaceHold() {
@@ -52,6 +53,16 @@ function App() {
           videoRef.current.currentTime =
             (videoRef.current.duration! / 10) * num;
           setCurrentTime(videoRef.current.currentTime);
+        } else if (e.key == "+") {
+          if (videoRef.current.playbackRate < 3) {
+            videoRef.current.playbackRate += 0.25;
+            setPlaybackRate(videoRef.current.playbackRate);
+          }
+        } else if (e.key == "-") {
+          if (videoRef.current.playbackRate > 0.25) {
+            videoRef.current.playbackRate -= 0.25;
+            setPlaybackRate(videoRef.current.playbackRate);
+          }
         }
       }
     }
@@ -120,6 +131,11 @@ function App() {
       >
         <p className="text-white text-2xl">Drop the mp4 video here</p>
       </div>
+      {videoFile && (
+        <p className="absolute text-3xl text-white font-extrabold top-0 right-0 p-3">
+          {playbackRate}
+        </p>
+      )}
       {videoFile && (
         <div className="h-full p-5 relative flex flex-col justify-between items-center">
           <video
